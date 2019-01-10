@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C4A172C1-204E-4B1A-9866-88F66D58405F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FixedMath", "src\FixedMath.csproj", "{37A7A2DA-923F-402F-994D-F5F094C51A10}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E365A75A-2083-4766-B176-B1ACB6E0B919}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FixedMath.Tests", "tests\FixedMath.Tests\FixedMath.Tests.csproj", "{82250AF8-4E81-4B95-9724-2F1B488518F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37A7A2DA-923F-402F-994D-F5F094C51A10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37A7A2DA-923F-402F-994D-F5F094C51A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37A7A2DA-923F-402F-994D-F5F094C51A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37A7A2DA-923F-402F-994D-F5F094C51A10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82250AF8-4E81-4B95-9724-2F1B488518F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82250AF8-4E81-4B95-9724-2F1B488518F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82250AF8-4E81-4B95-9724-2F1B488518F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82250AF8-4E81-4B95-9724-2F1B488518F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{37A7A2DA-923F-402F-994D-F5F094C51A10} = {C4A172C1-204E-4B1A-9866-88F66D58405F}
+		{82250AF8-4E81-4B95-9724-2F1B488518F3} = {E365A75A-2083-4766-B176-B1ACB6E0B919}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C5B9CE62-FFD0-4DAF-8ACC-ADB49C1A3147}
+	EndGlobalSection
+EndGlobal
