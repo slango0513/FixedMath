@@ -395,12 +395,12 @@ namespace FixedMath
 
                 if (b <= Fix64.Zero)
                 {
-                    Assert.Throws<ArgumentOutOfRangeException>(() => MathFix.Ln(b));
+                    Assert.Throws<ArgumentOutOfRangeException>(() => MathFix.Log(b));
                 }
                 else
                 {
                     var expected = Math.Log((double)b);
-                    var actual = (double)MathFix.Ln(b);
+                    var actual = (double)MathFix.Log(b);
                     var delta = Math.Abs(expected - actual);
 
                     Assert.True(delta <= maxDelta, string.Format("Ln({0}) = expected {1} but got {2}", b, expected, actual));
@@ -525,15 +525,15 @@ namespace FixedMath
         {
             Assert.True(MathFix.Sin(Fix64.Zero) == Fix64.Zero);
 
-            Assert.True(MathFix.Sin(Fix64.PiOver2) == Fix64.One);
-            Assert.True(MathFix.Sin(Fix64.Pi) == Fix64.Zero);
-            Assert.True(MathFix.Sin(Fix64.Pi + Fix64.PiOver2) == -Fix64.One);
-            Assert.True(MathFix.Sin(Fix64.PiTimes2) == Fix64.Zero);
+            Assert.True(MathFix.Sin(MathFix.PIOver2) == Fix64.One);
+            Assert.True(MathFix.Sin(MathFix.PI) == Fix64.Zero);
+            Assert.True(MathFix.Sin(MathFix.PI + MathFix.PIOver2) == -Fix64.One);
+            Assert.True(MathFix.Sin(MathFix.PITimes2) == Fix64.Zero);
 
-            Assert.True(MathFix.Sin(-Fix64.PiOver2) == -Fix64.One);
-            Assert.True(MathFix.Sin(-Fix64.Pi) == Fix64.Zero);
-            Assert.True(MathFix.Sin(-Fix64.Pi - Fix64.PiOver2) == Fix64.One);
-            Assert.True(MathFix.Sin(-Fix64.PiTimes2) == Fix64.Zero);
+            Assert.True(MathFix.Sin(-MathFix.PIOver2) == -Fix64.One);
+            Assert.True(MathFix.Sin(-MathFix.PI) == Fix64.Zero);
+            Assert.True(MathFix.Sin(-MathFix.PI - MathFix.PIOver2) == Fix64.One);
+            Assert.True(MathFix.Sin(-MathFix.PITimes2) == Fix64.Zero);
 
 
             for (double angle = -2 * Math.PI; angle <= 2 * Math.PI; angle += 0.0001)
@@ -585,8 +585,8 @@ namespace FixedMath
             var deltas = new List<decimal>();
 
             Assert.Equal(Fix64.Zero, MathFix.Acos(Fix64.One));
-            Assert.Equal(Fix64.PiOver2, MathFix.Acos(Fix64.Zero));
-            Assert.Equal(Fix64.Pi, MathFix.Acos(-Fix64.One));
+            Assert.Equal(MathFix.PIOver2, MathFix.Acos(Fix64.Zero));
+            Assert.Equal(MathFix.PI, MathFix.Acos(-Fix64.One));
 
             // Precision
             for (var x = -1.0; x < 1.0; x += 0.001)
@@ -625,15 +625,15 @@ namespace FixedMath
         {
             Assert.True(MathFix.Cos(Fix64.Zero) == Fix64.One);
 
-            Assert.True(MathFix.Cos(Fix64.PiOver2) == Fix64.Zero);
-            Assert.True(MathFix.Cos(Fix64.Pi) == -Fix64.One);
-            Assert.True(MathFix.Cos(Fix64.Pi + Fix64.PiOver2) == Fix64.Zero);
-            Assert.True(MathFix.Cos(Fix64.PiTimes2) == Fix64.One);
+            Assert.True(MathFix.Cos(MathFix.PIOver2) == Fix64.Zero);
+            Assert.True(MathFix.Cos(MathFix.PI) == -Fix64.One);
+            Assert.True(MathFix.Cos(MathFix.PI + MathFix.PIOver2) == Fix64.Zero);
+            Assert.True(MathFix.Cos(MathFix.PITimes2) == Fix64.One);
 
-            Assert.True(MathFix.Cos(-Fix64.PiOver2) == -Fix64.Zero);
-            Assert.True(MathFix.Cos(-Fix64.Pi) == -Fix64.One);
-            Assert.True(MathFix.Cos(-Fix64.Pi - Fix64.PiOver2) == Fix64.Zero);
-            Assert.True(MathFix.Cos(-Fix64.PiTimes2) == Fix64.One);
+            Assert.True(MathFix.Cos(-MathFix.PIOver2) == -Fix64.Zero);
+            Assert.True(MathFix.Cos(-MathFix.PI) == -Fix64.One);
+            Assert.True(MathFix.Cos(-MathFix.PI - MathFix.PIOver2) == Fix64.Zero);
+            Assert.True(MathFix.Cos(-MathFix.PITimes2) == Fix64.One);
 
 
             for (double angle = -2 * Math.PI; angle <= 2 * Math.PI; angle += 0.0001)
@@ -681,13 +681,13 @@ namespace FixedMath
         public void Tan()
         {
             Assert.True(MathFix.Tan(Fix64.Zero) == Fix64.Zero);
-            Assert.True(MathFix.Tan(Fix64.Pi) == Fix64.Zero);
-            Assert.True(MathFix.Tan(-Fix64.Pi) == Fix64.Zero);
+            Assert.True(MathFix.Tan(MathFix.PI) == Fix64.Zero);
+            Assert.True(MathFix.Tan(-MathFix.PI) == Fix64.Zero);
 
-            Assert.True(MathFix.Tan(Fix64.PiOver2 - (Fix64)0.001) > Fix64.Zero);
-            Assert.True(MathFix.Tan(Fix64.PiOver2 + (Fix64)0.001) < Fix64.Zero);
-            Assert.True(MathFix.Tan(-Fix64.PiOver2 - (Fix64)0.001) > Fix64.Zero);
-            Assert.True(MathFix.Tan(-Fix64.PiOver2 + (Fix64)0.001) < Fix64.Zero);
+            Assert.True(MathFix.Tan(MathFix.PIOver2 - (Fix64)0.001) > Fix64.Zero);
+            Assert.True(MathFix.Tan(MathFix.PIOver2 + (Fix64)0.001) < Fix64.Zero);
+            Assert.True(MathFix.Tan(-MathFix.PIOver2 - (Fix64)0.001) > Fix64.Zero);
+            Assert.True(MathFix.Tan(-MathFix.PIOver2 + (Fix64)0.001) < Fix64.Zero);
 
             for (double angle = 0;/*-2 * Math.PI;*/ angle <= 2 * Math.PI; angle += 0.0001)
             {
@@ -771,11 +771,11 @@ namespace FixedMath
         {
             var deltas = new List<decimal>();
             // Identities
-            Assert.Equal(MathFix.Atan2(Fix64.Zero, -Fix64.One), Fix64.Pi);
+            Assert.Equal(MathFix.Atan2(Fix64.Zero, -Fix64.One), MathFix.PI);
             Assert.Equal(MathFix.Atan2(Fix64.Zero, Fix64.Zero), Fix64.Zero);
             Assert.Equal(MathFix.Atan2(Fix64.Zero, Fix64.One), Fix64.Zero);
-            Assert.Equal(MathFix.Atan2(Fix64.One, Fix64.Zero), Fix64.PiOver2);
-            Assert.Equal(MathFix.Atan2(-Fix64.One, Fix64.Zero), -Fix64.PiOver2);
+            Assert.Equal(MathFix.Atan2(Fix64.One, Fix64.Zero), MathFix.PIOver2);
+            Assert.Equal(MathFix.Atan2(-Fix64.One, Fix64.Zero), -MathFix.PIOver2);
 
             // Precision
             for (var y = -1.0; y < 1.0; y += 0.01)

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;GENERICS_WORK</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.11.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FixedMath.Numerics.Vectors.PerformanceTests\FixedMath.Numerics.Vectors.PerformanceTests.csproj" />
+  </ItemGroup>
+
+</Project>
