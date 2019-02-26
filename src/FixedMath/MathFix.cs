@@ -142,7 +142,7 @@ namespace FixedMath
         /// <returns></returns>
         public static Fix64 Log(Fix64 x)
         {
-            return Fix64.FastMul(Log2(x), E);
+            return Fix64.FastMultiply(Log2(x), E);
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace FixedMath
 
             for (int i = 0; i < Fix64.FRACTIONAL_PLACES; i++)
             {
-                z = Fix64.FastMul(z, z);
+                z = Fix64.FastMultiply(z, z);
                 if (z.RawValue >= (Fix64.ONE << 1))
                 {
                     z = new Fix64(z.RawValue >> 1);
@@ -316,7 +316,7 @@ namespace FixedMath
             int i = 1;
             while (term.RawValue != 0)
             {
-                term = Fix64.FastMul(Fix64.FastMul(x, term), E) / (Fix64)i;
+                term = Fix64.FastMultiply(Fix64.FastMultiply(x, term), E) / (Fix64)i;
                 result += term;
                 i++;
             }

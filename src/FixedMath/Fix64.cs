@@ -9,7 +9,7 @@ namespace FixedMath
     /// </summary>
     public partial struct Fix64 : IEquatable<Fix64>, IComparable<Fix64>, IFormattable
     {
-        readonly long m_rawValue;
+        private readonly long m_rawValue;
 
         // Precision of this type is 2^-32, that is 2,3283064365386962890625E-10
         public static readonly decimal Precision = (decimal)(new Fix64(1L));//0.00000000023283064365386962890625m;
@@ -32,15 +32,15 @@ namespace FixedMath
         /// This is the constructor from raw value; it can only be used interally.
         /// </summary>
         /// <param name="rawValue"></param>
-        internal Fix64(long rawValue)
+        public Fix64(long rawValue)
         {
             m_rawValue = rawValue;
         }
 
-        public Fix64(int value)
-        {
-            m_rawValue = value * ONE;
-        }
+        //public Fix64(int value)
+        //{
+        //    m_rawValue = value * ONE;
+        //}
 
         public static Fix64 FromRaw(long rawValue)
         {
@@ -218,9 +218,9 @@ namespace FixedMath
 
         public static Fix64 operator %(Fix64 x, Fix64 y)
         {
-            return new Fix64(x.m_rawValue == MIN_VALUE & y.m_rawValue == -1 ?
-                0 :
-                x.m_rawValue % y.m_rawValue);
+            return new Fix64(x.m_rawValue == MIN_VALUE & y.m_rawValue == -1
+                ? 0
+                : x.m_rawValue % y.m_rawValue);
         }
 
         public static Fix64 operator +(Fix64 x)
@@ -263,6 +263,22 @@ namespace FixedMath
             return x.m_rawValue != y.m_rawValue;
         }
 
+
+        public static implicit operator Fix64(byte value)
+        {
+            return new Fix64(value * ONE);
+        }
+
+        public static implicit operator Fix64(char value)
+        {
+            return new Fix64(value * ONE);
+        }
+
+        public static implicit operator Fix64(short value)
+        {
+            return new Fix64(value * ONE);
+        }
+
         public static implicit operator Fix64(int value)
         {
             return new Fix64(value * ONE);
@@ -273,9 +289,19 @@ namespace FixedMath
             return new Fix64(value * ONE);
         }
 
-        public static explicit operator long(Fix64 value)
+        public static implicit operator Fix64(sbyte value)
         {
-            return value.m_rawValue >> FRACTIONAL_PLACES;
+            return new Fix64(value * ONE);
+        }
+
+        public static implicit operator Fix64(ushort value)
+        {
+            return new Fix64(value * ONE);
+        }
+
+        public static implicit operator Fix64(uint value)
+        {
+            return new Fix64(value * ONE);
         }
 
         public static implicit operator Fix64(float value)
@@ -283,24 +309,30 @@ namespace FixedMath
             return new Fix64((long)(value * ONE));
         }
 
-        public static explicit operator float(Fix64 value)
-        {
-            return (float)value.m_rawValue / ONE;
-        }
-
         public static implicit operator Fix64(double value)
         {
             return new Fix64((long)(value * ONE));
         }
 
+        public static implicit operator Fix64(decimal value)
+        {
+            return new Fix64((long)(value * ONE));
+        }
+
+
+        public static explicit operator long(Fix64 value)
+        {
+            return value.m_rawValue >> FRACTIONAL_PLACES;
+        }
+
+        public static explicit operator float(Fix64 value)
+        {
+            return (float)value.m_rawValue / ONE;
+        }
+
         public static explicit operator double(Fix64 value)
         {
             return (double)value.m_rawValue / ONE;
-        }
-
-        public static explicit operator Fix64(decimal value)
-        {
-            return new Fix64((long)(value * ONE));
         }
 
         public static explicit operator decimal(Fix64 value)

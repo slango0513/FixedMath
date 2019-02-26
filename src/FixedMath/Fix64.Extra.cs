@@ -38,7 +38,7 @@
         /// <summary>
         /// Subtracts y from x witout performing overflow checking. Should be inlined by the CLR.
         /// </summary>
-        public static Fix64 FastSub(Fix64 x, Fix64 y)
+        public static Fix64 FastSubtract(Fix64 x, Fix64 y)
         {
             return new Fix64(x.m_rawValue - y.m_rawValue);
         }
@@ -47,7 +47,7 @@
         /// Performs multiplication without checking for overflow.
         /// Useful for performance-critical code where the values are guaranteed not to cause overflow
         /// </summary>
-        public static Fix64 FastMul(Fix64 x, Fix64 y)
+        public static Fix64 FastMultiply(Fix64 x, Fix64 y)
         {
             var xl = x.m_rawValue;
             var yl = y.m_rawValue;
@@ -75,7 +75,7 @@
         /// Performs modulo as fast as possible; throws if x == MinValue and y == -1.
         /// Use the operator (%) for a more reliable but slower modulo.
         /// </summary>
-        public static Fix64 FastMod(Fix64 x, Fix64 y)
+        public static Fix64 FastRemainder(Fix64 x, Fix64 y)
         {
             return new Fix64(x.m_rawValue % y.m_rawValue);
         }

@@ -209,9 +209,9 @@ namespace FixedMath
 
             // Find the two closest values in the LUT and perform linear interpolation
             // This is what kills the performance of this function on x86 - x64 is fine though
-            var rawIndex = Fix64.FastMul(clamped, LutInterval);
+            var rawIndex = Fix64.FastMultiply(clamped, LutInterval);
             var roundedIndex = Round(rawIndex);
-            var indexError = Fix64.FastSub(rawIndex, roundedIndex);
+            var indexError = Fix64.FastSubtract(rawIndex, roundedIndex);
 
             var nearestValue = new Fix64(SinLut[flipHorizontal ?
                 SinLut.Length - 1 - (int)roundedIndex :
@@ -220,7 +220,7 @@ namespace FixedMath
                 SinLut.Length - 1 - (int)roundedIndex - Sign(indexError) :
                 (int)roundedIndex + Sign(indexError)]);
 
-            var delta = Fix64.FastMul(indexError, FastAbs(Fix64.FastSub(nearestValue, secondNearestValue))).RawValue;
+            var delta = Fix64.FastMultiply(indexError, FastAbs(Fix64.FastSubtract(nearestValue, secondNearestValue))).RawValue;
             var interpolatedValue = nearestValue.RawValue + (flipHorizontal ? -delta : delta);
             var finalValue = flipVertical ? -interpolatedValue : interpolatedValue;
             return new Fix64(finalValue);
@@ -260,14 +260,14 @@ namespace FixedMath
             var clamped = new Fix64(clampedPi);
 
             // Find the two closest values in the LUT and perform linear interpolation
-            var rawIndex = Fix64.FastMul(clamped, LutInterval);
+            var rawIndex = Fix64.FastMultiply(clamped, LutInterval);
             var roundedIndex = Round(rawIndex);
-            var indexError = Fix64.FastSub(rawIndex, roundedIndex);
+            var indexError = Fix64.FastSubtract(rawIndex, roundedIndex);
 
             var nearestValue = new Fix64(TanLut[(int)roundedIndex]);
             var secondNearestValue = new Fix64(TanLut[(int)roundedIndex + Sign(indexError)]);
 
-            var delta = Fix64.FastMul(indexError, FastAbs(Fix64.FastSub(nearestValue, secondNearestValue))).RawValue;
+            var delta = Fix64.FastMultiply(indexError, FastAbs(Fix64.FastSubtract(nearestValue, secondNearestValue))).RawValue;
             var interpolatedValue = nearestValue.RawValue + delta;
             var finalValue = flip ? -interpolatedValue : interpolatedValue;
             return new Fix64(finalValue);
